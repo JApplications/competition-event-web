@@ -43,24 +43,27 @@
               </ul>
           </li>
           <li>
-              <a href="#">Ocjenjivanje</a>
+              <router-link class="nav-link" to="/scores">Rezultati i ocjenjivanje</router-link>
           </li>
       </ul>
   </nav>
 
-  <div id="content">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div id="content" class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light content-navbar">
           <div class="container-fluid">
 
-              <button type="button" id="sidebarCollapse" class="btn btn-info">
-                  <i class="fas fa-align-left"></i>
-                  <span>Toggle Sidebar</span>
+              <button type="button" id="sidebarCollapse" class="btn btn-default">
+                  <span>Menu</span>
               </button>
 
           </div>
       </nav>
 
-      <router-view/>
+      <div class="row">
+        <div class="col-md-12">
+          <router-view/>
+        </div>
+      </div>
 
   </div>
 </div>

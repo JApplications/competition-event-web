@@ -9,6 +9,7 @@ import EventDetails from './components/EventDetails.vue'
 import Contestants from './components/Contestants.vue'
 import NewContestant from './components/NewContestant.vue'
 import ContestantDetails from './components/ContestantDetails.vue'
+import Scores from './components/Scores.vue'
 
 Vue.use(Router)
 
@@ -65,6 +66,11 @@ export default new Router({
       path: '/contestant-details/:id',
       name: 'contestant-details',
       component: ContestantDetails
+    },
+    {
+      path: '/scores',
+      name: 'scores',
+      component: Scores
     }
   ]
 })

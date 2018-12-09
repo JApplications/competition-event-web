@@ -94,3 +94,10 @@ ul ul a {
             margin-left: 0;
         }
     }
+.content-navbar{
+    background-color: #646464;
+    margin-right: -30px
+}
+.container-fluid{
+    margin-left:-15px;
+}
