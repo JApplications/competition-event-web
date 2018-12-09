@@ -1,6 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Competitions from './components/Competitions.vue'
+import CompetitionDetails from './components/CompetitionDetails.vue'
+import NewCompetition from './components/NewCompetition.vue'
+import Events from './components/Events.vue'
+import NewEvent from './components/NewEvent.vue'
+import EventDetails from './components/EventDetails.vue'
+import Contestants from './components/Contestants.vue'
+import NewContestant from './components/NewContestant.vue'
+import ContestantDetails from './components/ContestantDetails.vue'
+import Scores from './components/Scores.vue'
 
 Vue.use(Router)
 
@@ -11,15 +20,57 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Competitions
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/competitions',
+      name: 'competitions',
+      component: Competitions
+    },
+    {
+      path: '/new-competition',
+      name: 'new-competition',
+      component: NewCompetition
+    },
+    {
+      path: '/competition-details/:id',
+      name: 'competition-details',
+      component: CompetitionDetails
+    },
+    {
+      path: '/events',
+      name: 'events',
+      component: Events
+    },
+    {
+      path: '/new-event',
+      name: 'new-event',
+      component: NewEvent
+    },
+    {
+      path: '/event-details/:id',
+      name: 'event-details',
+      component: EventDetails
+    },
+    {
+      path: '/contestants',
+      name: 'contestants',
+      component: Contestants
+    },
+    {
+      path: '/new-contestant',
+      name: 'new-contestant',
+      component: NewContestant
+    },
+    {
+      path: '/contestant-details/:id',
+      name: 'contestant-details',
+      component: ContestantDetails
+    },
+    {
+      path: '/scores',
+      name: 'scores',
+      component: Scores
     }
   ]
 })
