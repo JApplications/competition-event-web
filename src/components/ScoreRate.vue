@@ -1,15 +1,15 @@
 <template>
-  <div class="events">
+  <div class="score-markup">
     <h1>{{title}}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'EventDetails',
+  name: 'ScoreMarkup',
   data () {
     return {
-      title: 'Detalji događaja'
+      title: 'Unos ocjene'
     }
   }
 }

@@ -3,13 +3,17 @@ import Router from 'vue-router'
 import Competitions from './components/Competitions.vue'
 import CompetitionDetails from './components/CompetitionDetails.vue'
 import NewCompetition from './components/NewCompetition.vue'
-import Events from './components/Events.vue'
-import NewEvent from './components/NewEvent.vue'
-import EventDetails from './components/EventDetails.vue'
+import CompetitionEvents from './components/CompetitionEvents.vue'
+import NewCompetitionEvent from './components/NewCompetitionEvent.vue'
+import CompetitionEventDetails from './components/CompetitionEventDetails.vue'
 import Contestants from './components/Contestants.vue'
 import NewContestant from './components/NewContestant.vue'
 import ContestantDetails from './components/ContestantDetails.vue'
 import Scores from './components/Scores.vue'
+import ScoresForEvaluation from './components/ScoresForEvaluation.vue'
+import ScoreRate from './components/ScoreRate.vue'
+import PostDetails from './components/PostDetails.vue'
+import NewPost from './components/NewPost.vue'
 
 Vue.use(Router)
 
@@ -40,17 +44,17 @@ export default new Router({
     {
       path: '/events',
       name: 'events',
-      component: Events
+      component: CompetitionEvents
     },
     {
       path: '/new-event',
       name: 'new-event',
-      component: NewEvent
+      component: NewCompetitionEvent
     },
     {
       path: '/event-details/:id',
       name: 'event-details',
-      component: EventDetails
+      component: CompetitionEventDetails
     },
     {
       path: '/contestants',
@@ -71,6 +75,26 @@ export default new Router({
       path: '/scores',
       name: 'scores',
       component: Scores
+    },
+    {
+      path: '/scores-for-evaluation',
+      name: 'scores-for-evaluation',
+      component: ScoresForEvaluation
+    },
+    {
+      path: '/score-rate/:id',
+      name: 'score-rate',
+      component: ScoreRate
+    },
+    {
+      path: '/post-details/:id',
+      name: 'post-details',
+      component: PostDetails
+    },
+    {
+      path: '/new-post',
+      name: 'new-post',
+      component: NewPost
     }
   ]
 })

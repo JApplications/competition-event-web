@@ -15,7 +15,7 @@ p {
 }
 
 a, a:hover, a:focus {
-    color: inherit;
+    color: #fff;
     text-decoration: none;
     transition: all 0.3s;
 }
@@ -48,7 +48,7 @@ a, a:hover, a:focus {
     display: block;
 }
 #sidebar ul li a:hover {
-    color: #7386D5;
+    color: #fff;
     background: #999;
 }
 
@@ -96,8 +96,17 @@ ul ul a {
     }
 .content-navbar{
     background-color: #646464;
-    margin-right: -30px
+    margin-right: -15px
 }
 .container-fluid{
     margin-left:-15px;
+}
+.application-content{
+    padding: 20px 40px;
+}
+.push-top-20{
+    margin-top:20px;
+}
+.push-top-10{
+    margin-top:10px;
 }

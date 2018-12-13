@@ -1,16 +1,16 @@
 <template>
-        <div class="wrapper">
+<div class="wrapper">
 
   <!-- Sidebar -->
   <nav id="sidebar">
       <div class="sidebar-header">
-          <h3>Competition event</h3>
+          <h3>Događaji i natjecanja</h3>
       </div>
 
       <ul class="list-unstyled components">
-          <p>Admin pages</p>
+          <p>Stranice za administraciju</p>
           <li class="active">
-              <a href="#eventSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Dodađaji</a>
+              <a href="#eventSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-calendar"></i> Dodađaji</a>
               <ul class="collapse list-unstyled" id="eventSubmenu">
                   <li>
                     <router-link class="nav-link" to="/events">Pregled</router-link>
@@ -21,7 +21,7 @@
               </ul>
           </li>
           <li>
-              <a href="#competitionSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Natjecanja</a>
+              <a href="#competitionSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-th-list"></i> Natjecanja</a>
               <ul class="collapse list-unstyled" id="competitionSubmenu">
                   <li>
                       <router-link class="nav-link" to="/competitions">Pregled</router-link>
@@ -32,18 +32,26 @@
               </ul>
           </li>
           <li>
-              <a href="#competitorsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Natjecatelji</a>
+              <a href="#competitorsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-user"></i> Natjecatelji</a>
               <ul class="collapse list-unstyled" id="competitorsSubmenu">
                   <li>
                       <router-link class="nav-link" to="/contestants">Pregled</router-link>
                   </li>
                       <li>
-                      <router-link class="nav-link" to="/new-contestant">Novo natjecanje</router-link>
+                      <router-link class="nav-link" to="/new-contestant">Novi natjecatelj</router-link>
                   </li>
               </ul>
           </li>
           <li>
-              <router-link class="nav-link" to="/scores">Rezultati i ocjenjivanje</router-link>
+                <a href="#scoresAndResults" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bar-chart"></i> Rezultati i ocjenjivanje</a>
+              <ul class="collapse list-unstyled" id="scoresAndResults">
+                  <li>
+                      <router-link class="nav-link" to="/scores">Trenutni rezultati</router-link>
+                  </li>
+                      <li>
+                      <router-link class="nav-link" to="/scores-for-evaluation">Ocjenjivanje</router-link>
+                  </li>
+              </ul>
           </li>
       </ul>
   </nav>
@@ -59,7 +67,7 @@
           </div>
       </nav>
 
-      <div class="row">
+      <div class="row application-content">
         <div class="col-md-12">
           <router-view/>
         </div>
