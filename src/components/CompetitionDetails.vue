@@ -10,13 +10,17 @@
           </div>
           <div class="form-group">
             <label for="numberOfRounds">Broj rundi</label>
-            <input type="text" class="form-control" v-model="competition.NumberOfRounds" id="numberOfRounds" placeholder="Unesite broj rundi">
+            <input type="text" class="form-control"  min="1" max="5" v-model="competition.NumberOfRounds" id="numberOfRounds" placeholder="Unesite broj rundi">
+          </div>
+          <div class="form-group">
+            <label for="maxScore">Maksimalni broj bodova</label>
+            <input type="text" class="form-control" v-model="competition.MaxScore" id="maxScore" placeholder="Unesite maksimalni broj bodova">
           </div>
           <div class="form-group">
             <label for="competition-ddl">Povezano natjecanje</label>
             <select class="form-control" id="competition-ddl" v-model="competition.RelatedCompetitionId">
               <option value="0">Nema</option>
-              <option v-bind:key="index" v-for="(competition,index) in allCompetitions" v-bind:value="competition.Id">{{competition.Title}}</option>
+              <option v-bind:key="index" v-for="(competition,index) in allCompetitions" v-bind:value="competition.id">{{competition.title}}</option>
             </select>
           </div>
           <div class="form-group">
@@ -35,6 +39,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'CompeptitionDetails',
   data () {
@@ -43,33 +49,23 @@ export default {
       competition: {
         Id: 1,
         Title: 'Natjecanje 1',
+        Description: 'Opis prvog natjecanja',
         NumberOfRounds: 1,
+        MaxScore: 100,
         RelatedCompetitionId: 2,
         Status: 1
       },
-      allCompetitions: [
-        {
-          Id: 1,
-          Title: 'Natjecanje 1'
-        },
-        {
-          Id: 2,
-          Title: 'Natjecanje 2'
-        },
-        {
-          Id: 3,
-          Title: 'Natjecanje 3'
-        },
-        {
-          Id: 4,
-          Title: 'Natjecanje 4'
-        },
-        {
-          Id: 5,
-          Title: 'Natjecanje 5'
-        }
-      ]
+      allCompetitions: []
     }
+  },
+  created () {
+    axios.get('https://localhost:44345/api/competitions')
+      .then(response => {
+        this.allCompetitions = response.data
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
   }
 }
 </script>

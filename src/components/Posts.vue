@@ -13,12 +13,12 @@
       </thead>
       <tbody>
         <tr v-bind:key="index" v-for="(post,index) in posts">
-          <td>{{post.Id}}</td>
-          <td>{{post.Title}}</td>
-          <td>{{post.Text}}</td>
-          <td>{{post.Status}}</td>
+          <td>{{post.id}}</td>
+          <td>{{post.title}}</td>
+          <td>{{post.text}}</td>
+          <td>{{post.status}}</td>
           <td>
-            <button type="button" v-on:click="details(post.Id)" class="btn btn-default">Detalji</button>
+            <button type="button" v-on:click="details(post.id)" class="btn btn-default">Detalji</button>
           </td>
         </tr>
       </tbody>
@@ -27,38 +27,24 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'Posts',
   data () {
     return {
       title: 'Objavljeni članci za događaj',
-      posts: [
-        {
-          Id: 1,
-          Title: 'Naslov prvog članka',
-          Text: 'Tekst prvog članka',
-          Status: 'Aktivan'
-        },
-        {
-          Id: 2,
-          Title: 'Naslov drugog članka',
-          Text: 'Tekst drugog članka',
-          Status: 'Aktivan'
-        },
-        {
-          Id: 3,
-          Title: 'Naslov trećeg članka',
-          Text: 'Tekst trećeg članka',
-          Status: 'Aktivan'
-        },
-        {
-          Id: 4,
-          Title: 'Naslov četvrtog članka',
-          Text: 'Tekst četvrtog članka',
-          Status: 'Neaktivan'
-        }
-      ]
+      posts: []
     }
+  },
+  created () {
+    axios.get('https://localhost:44345/api/posts')
+      .then(response => {
+        this.posts = response.data
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
   },
   methods: {
     details: function (id) {

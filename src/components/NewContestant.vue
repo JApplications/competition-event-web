@@ -6,19 +6,19 @@
         <form>
           <div class="form-group">
             <label for="firstName">Ime natjecatelja</label>
-            <input type="text" class="form-control" id="firstName" placeholder="Unesite ime natjecatelja">
+            <input type="text" class="form-control" v-model="contestant.FirstName" id="firstName" placeholder="Unesite ime natjecatelja">
           </div>
           <div class="form-group">
             <label for="lastName">Prezime natjecatelja</label>
-            <input type="text" class="form-control" id="lastName" placeholder="Unesite prezime natjecatelja">
+            <input type="text" class="form-control" v-model="contestant.LastName" id="lastName" placeholder="Unesite prezime natjecatelja">
           </div>
           <div class="form-group">
             <label for="uniqueId">Registracija</label>
-            <input type="text" class="form-control" id="uniqueId" placeholder="Unesite registraciju">
+            <input type="text" class="form-control" v-model="contestant.UniqueId" id="uniqueId" placeholder="Unesite registraciju">
           </div>
           <div class="form-group">
             <label for="club">Klub</label>
-            <input type="text" class="form-control" id="club" placeholder="Unesite klub ako je član">
+            <input type="text" class="form-control" v-model="contestant.ClubName" id="club" placeholder="Unesite klub ako je član">
           </div>
           <div class="form-group">
             <label for="event-ddl">Status</label>
@@ -40,16 +40,27 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'NewContestant',
   data () {
     return {
-      title: 'Novi natjecatelj'
+      title: 'Novi natjecatelj',
+      contestant: {}
     }
   },
   methods: {
     saveContestant: function () {
-      console.log('Save pressed')
+      axios({
+        method: 'post',
+        url: 'https://localhost:44345/api/contestants/',
+        data: this.contestant
+      })
+        .then(response => {})
+        .catch(e => {
+          this.errors.push(e)
+        })
     }
   }
 }

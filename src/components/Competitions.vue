@@ -7,6 +7,7 @@
           <td>Id</td>
           <td>Naziv</td>
           <td>Broj rundi</td>
+          <td>Maksimalni broj bodova</td>
           <td>Povezano natjecanje</td>
           <td>Status</td>
           <td></td>
@@ -14,11 +15,12 @@
       </thead>
       <tbody>
         <tr v-bind:key="index" v-for="(competition, index) in competitions">
-          <td>{{competition.Id}}</td>
-          <td>{{competition.Title}}</td>
-          <td>{{competition.NumberOfRounds}}</td>
-          <td>{{competition.RelatedCompetition}}</td>
-          <td>{{competition.Status}}</td>
+          <td>{{competition.id}}</td>
+          <td>{{competition.title}}</td>
+          <td>{{competition.numberOfRounds}}</td>
+          <td>{{competition.maxScore}}</td>
+          <td>{{competition.relatedCompetition}}</td>
+          <td>{{competition.status}}</td>
           <td>
             <button type="button" v-on:click="details(competition.Id)" class="btn btn-default">Detalji</button>
           </td>
@@ -29,49 +31,24 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'Competitions',
   data: function () {
     return {
       title: 'Natjecanja za događaj',
-      competitions: [
-        {
-          Id: 1,
-          Title: 'Natjecanje 1',
-          NumberOfRounds: 1,
-          RelatedCompetition: 'Nema',
-          Status: 'Aktivan'
-        },
-        {
-          Id: 2,
-          Title: 'Natjecanje 2',
-          NumberOfRounds: 1,
-          RelatedCompetition: 'Nema',
-          Status: 'Aktivan'
-        },
-        {
-          Id: 3,
-          Title: 'Natjecanje 3',
-          NumberOfRounds: 3,
-          RelatedCompetition: 'Nema',
-          Status: 'Aktivan'
-        },
-        {
-          Id: 4,
-          Title: 'Natjecanje 4',
-          NumberOfRounds: 3,
-          RelatedCompetition: 'Natjecanje 3',
-          Status: 'Aktivan'
-        },
-        {
-          Id: 5,
-          Title: 'Natjecanje 5',
-          NumberOfRounds: 1,
-          RelatedCompetition: 'Nema',
-          Status: 'Neaktivan'
-        }
-      ]
+      competitions: []
     }
+  },
+  created () {
+    axios.get('https://localhost:44345/api/competitions')
+      .then(response => {
+        this.competitions = response.data
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
   },
   methods: {
     details: function (id) {

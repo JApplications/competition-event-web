@@ -14,6 +14,7 @@ import ScoresForEvaluation from './components/ScoresForEvaluation.vue'
 import ScoreRate from './components/ScoreRate.vue'
 import PostDetails from './components/PostDetails.vue'
 import NewPost from './components/NewPost.vue'
+import Posts from './components/Posts.vue'
 
 Vue.use(Router)
 
@@ -85,6 +86,11 @@ export default new Router({
       path: '/score-rate/:id',
       name: 'score-rate',
       component: ScoreRate
+    },
+    {
+      path: '/posts',
+      name: 'posts',
+      component: Posts
     },
     {
       path: '/post-details/:id',

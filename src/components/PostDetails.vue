@@ -6,15 +6,15 @@
         <form>
           <div class="form-group">
             <label for="title">Naslov članka</label>
-            <input type="text" v-model="post.Title" class="form-control" id="title" placeholder="Unesite naslov članka">
+            <input type="text" v-model="post.title" class="form-control" id="title" placeholder="Unesite naslov članka">
           </div>
           <div class="form-group">
             <label for="numberOfRounds">Tekst članka</label>
-            <input type="text" v-model="post.Text" class="form-control" id="numberOfRounds" placeholder="Unesite tekst članka">
+            <input type="text" v-model="post.text" class="form-control" id="numberOfRounds" placeholder="Unesite tekst članka">
           </div>
           <div class="form-group">
             <label for="event-ddl">Status</label>
-            <select class="form-control" id="event-ddl" v-model="post.Status">
+            <select class="form-control" id="event-ddl" v-model="post.status">
               <option value="1">Aktivan</option>
               <option value="2">Neaktivan</option>
               <option value="3">Obrisan</option>
@@ -28,18 +28,24 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'PostDetail',
   data () {
     return {
       title: 'Članak',
-      post: {
-        Id: 1,
-        Title: 'Naslov prvog članka',
-        Text: 'Tekst prvog članka',
-        Status: 1
-      }
+      post: {}
     }
+  },
+  created () {
+    axios.get('https://localhost:44345/api/posts/' + this.$route.params.id)
+      .then(response => {
+        this.post = response.data
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
   },
   methods: {
     savePost: function () {

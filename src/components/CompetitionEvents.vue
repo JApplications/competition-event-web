@@ -15,13 +15,13 @@
       </thead>
       <tbody>
         <tr v-bind:key="index" v-for="(competitionEvent,index) in competitionEvents">
-          <td>{{competitionEvent.Id}}</td>
-          <td>{{competitionEvent.Title}}</td>
-          <td>{{competitionEvent.StartDate}}</td>
-          <td>{{competitionEvent.EndDate}}</td>
-          <td>{{competitionEvent.Status}}</td>
+          <td>{{competitionEvent.id}}</td>
+          <td>{{competitionEvent.title}}</td>
+          <td>{{competitionEvent.startDate}}</td>
+          <td>{{competitionEvent.endDate}}</td>
+          <td>{{competitionEvent.status}}</td>
           <td>
-            <button type="button" v-on:click="details(competitionEvent.Id)" class="btn btn-default">Detalji</button>
+            <button type="button" v-on:click="details(competitionEvent.id)" class="btn btn-default">Detalji</button>
           </td>
         </tr>
       </tbody>
@@ -30,42 +30,24 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'CompetitionEvents',
   data () {
     return {
       title: 'Pregled dodađaja',
-      competitionEvents: [
-        {
-          Id: 1,
-          Title: 'Prvi show',
-          StartDate: '21.12.2018',
-          EndDate: '23.12.2018',
-          Status: 'Neaktivan'
-        },
-        {
-          Id: 2,
-          Title: 'Drugi show',
-          StartDate: '07.12.20188',
-          EndDate: '15.12.20188',
-          Status: 'Aktivan'
-        },
-        {
-          Id: 3,
-          Title: 'Treći show',
-          StartDate: '11.12.2018',
-          EndDate: '23.12.2018',
-          Status: 'Aktivan'
-        },
-        {
-          Id: 4,
-          Title: 'Četvrti show',
-          StartDate: '21.11.2018',
-          EndDate: '23.11.2018',
-          Status: 'Završen'
-        }
-      ]
+      competitionEvents: []
     }
+  },
+  created () {
+    axios.get('https://localhost:44345/api/competitionevents')
+      .then(response => {
+        this.competitionEvents = response.data
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
   },
   methods: {
     details: function (id) {

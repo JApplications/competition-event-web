@@ -37,19 +37,30 @@
                   <li>
                       <router-link class="nav-link" to="/contestants">Pregled</router-link>
                   </li>
-                      <li>
+                  <li>
                       <router-link class="nav-link" to="/new-contestant">Novi natjecatelj</router-link>
                   </li>
               </ul>
           </li>
           <li>
-                <a href="#scoresAndResults" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bar-chart"></i> Rezultati i ocjenjivanje</a>
+              <a href="#scoresAndResults" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bar-chart"></i> Rezultati i ocjenjivanje</a>
               <ul class="collapse list-unstyled" id="scoresAndResults">
                   <li>
                       <router-link class="nav-link" to="/scores">Trenutni rezultati</router-link>
                   </li>
                       <li>
                       <router-link class="nav-link" to="/scores-for-evaluation">Ocjenjivanje</router-link>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <a href="#posts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bar-chart"></i>Objave</a>
+              <ul class="collapse list-unstyled" id="posts">
+                  <li>
+                      <router-link class="nav-link" to="/posts">Sve objave</router-link>
+                  </li>
+                    <li>
+                      <router-link class="nav-link" to="/new-post">Novi članak</router-link>
                   </li>
               </ul>
           </li>
